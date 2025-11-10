@@ -7,7 +7,7 @@ function Header() {
             <div className="flex items-center md:gap-x-12">
               <a
                 className="inline-block rounded-lg px-2 py-1 text-xl font-mono font-bold text-black-950 hover:bg-slate-100 hover:text-slate-900"
-                href="#"
+                href="/"
               >
                 AGRI.AI
               </a>
