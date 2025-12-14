@@ -34,161 +34,43 @@ function Form({ onSubmit }) {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-blue-400 to-violet-400 rounded-lg px-4 m-8 h-[calc(100vh-80px)]">
+      <div className="glass-card p-8 m-8 w-full max-w-4xl shadow-2xl">
         <form onSubmit={handleSubmit}>
-          <div className="text-2xl font-bold flex justify-center items-center py-8">
-            <a>
-              <h2 className="rounded-lg text-center">
-                ÜRÜN TAVSİYE MODELİ
-              </h2>
-            </a>
+          <div className="text-3xl font-bold flex justify-center items-center py-8 text-white drop-shadow-md">
+            <h2>ÜRÜN TAVSİYE MODELİ</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4">
-            {/* Nitrogen Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Nitrogen"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Azot
-              </label>
-              <input
-                type="number"
-                id="Nitrogen"
-                name="Nitrogen"
-                placeholder="Azot değerini girin"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                step="0"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Phosphorus Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Phosporus"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Fosfor
-              </label>
-              <input
-                type="number"
-                id="Phosporus"
-                name="Phosporus"
-                placeholder="Fosfor değerini girin"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                step="0"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Potassium Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Potassium"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Potasyum
-              </label>
-              <input
-                type="number"
-                id="Potassium"
-                name="Potassium"
-                placeholder="Potasyum değerini girin"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                step="0"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Temperature Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Temperature"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Sıcaklık
-              </label>
-              <input
-                type="number"
-                step="0.01"
-                id="Temperature"
-                name="Temperature"
-                placeholder="Sıcaklık değerini girin (°C)"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Humidity Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Humidity"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Nem
-              </label>
-              <input
-                type="number"
-                step="0.01"
-                id="Humidity"
-                name="Humidity"
-                placeholder="Nem değerini girin (%)"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* pH Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Ph"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                pH
-              </label>
-              <input
-                type="number"
-                step="0.01"
-                id="Ph"
-                name="Ph"
-                placeholder="pH değerini girin"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Rainfall Input */}
-            <div className="col-span-1">
-              <label
-                htmlFor="Rainfall"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Yağış
-              </label>
-              <input
-                type="number"
-                step="0.01"
-                id="Rainfall"
-                name="Rainfall"
-                placeholder="Yağış miktarını girin (mm)"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                onChange={handleInputChange}
-              />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+            {/* Helper function to generate inputs to dry up code */}
+            {[
+              { id: "Nitrogen", label: "Azot (N)" },
+              { id: "Phosporus", label: "Fosfor (P)" },
+              { id: "Potassium", label: "Potasyum (K)" },
+              { id: "Temperature", label: "Sıcaklık (°C)", step: "0.01" },
+              { id: "Humidity", label: "Nem (%)", step: "0.01" },
+              { id: "Ph", label: "pH Değeri", step: "0.01" },
+              { id: "Rainfall", label: "Yağış (mm)", step: "0.01" },
+            ].map((field) => (
+              <div key={field.id} className="col-span-1">
+                <label htmlFor={field.id} className="block text-slate-200 py-2 font-semibold">
+                  {field.label}
+                </label>
+                <input
+                  type="number"
+                  step={field.step || "0"}
+                  id={field.id}
+                  name={field.id}
+                  placeholder="..."
+                  className="w-full bg-black/20 border border-slate-600 rounded-lg py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  required
+                  onChange={handleInputChange}
+                />
+              </div>
+            ))}
           </div>
-          {/* Button */}
-          <div className="col-span-1 text-center">
+          <div className="col-span-1 text-center mt-6">
             <button
               type="submit"
-              className="w-64 h-14 bg-black hover:bg-black-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+              className="w-64 h-14 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
             >
               Tavsiye Al
             </button>
@@ -245,7 +127,7 @@ function Croprecommend() {
   const handleFormSubmit = async (formValues) => {
     try {
       const response = await fetch(
-        "https://karthikcropapi.onrender.com/predict",
+        "http://localhost:8000/api/crop/predict",
         {
           method: "POST",
           headers: {

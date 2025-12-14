@@ -47,43 +47,58 @@ otonom_ciftlik/
 ├── ML_MODEL/           # Python Backend ve ML Modelleri
 │   ├── API/            # Ürün önerisi API'si
 │   └── FertAPI/        # Gübre önerisi API'si
-├── .gitignore          # Git yapılandırması
-├── LICENSE             # MIT Lisansı
-└── README.md           # Proje dökümantasyonu
+├── .gitignore          # Git## 🚀 Hızlı Kurulum
+
+Projeyi çalıştırmak için 2 yöntem bulunmaktadır:
+
+### Yöntem 1: Otomatik Başlatma (Önerilen - Windows)
+`start_local.bat` dosyasını çift tıklayarak çalıştırın. Bu script, gerekli kütüphaneleri yükleyecek ve hem backend hem de frontend sunucularını otomatik olarak başlatacaktır.
+
+### Yöntem 2: Docker ile Çalıştırma
+Bilgisayarınızda Docker yüklü ise tek komutla tüm sistemi ayağa kaldırabilirsiniz:
+
+```bash
+docker-compose up --build
 ```
 
----
+### Yöntem 3: Manuel Kurulum
 
-## 🏁 **Kurulum ve Çalıştırma**
+**Backend:**
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
 
-### Ön Gereksinimler
-* Node.js ve npm
-* Python 3.8+
-
-### 1. Frontend (React) Kurulumu
-
+**Frontend:**
 ```bash
 cd croprecommender
 npm install
 npm start
 ```
-Uygulama `http://localhost:3000` adresinde çalışacaktır.
 
-### 2. Backend (Flask) Kurulumu
+## 🏗️ Proje Mimarisi
 
-Model API'lerini çalıştırmak için ilgili klasöre gidin:
+- **Backend:** Python (FastAPI) - Hızlı ve modern API mimarisi.
+- **Frontend:** React.js + Tailwind CSS - Modern, responsive ve şık kullanıcı arayüzü.
+- **Yapay Zeka:** Scikit-Learn (Sınıflandırma Modelleri).
+- **Veritabanı:** (Gelecek sürümlerde eklenecek).
 
-```bash
-cd ML_MODEL/API
-pip install -r requirements.txt
-python app.py
-```
+## 🌟 Özellikler
 
----
+1.  **Ürün Tavsiyesi:** Toprak verilerine (Azot, Fosfor, Potasyum, pH vb.) göre en verimli ürünü önerir.
+2.  **Gübre Tavsiyesi:** Seçilen ürün ve toprak durumuna göre gübreleme önerileri sunar.
+3.  **Bitki Hastalığı Tespiti:** Yüklenen bitki fotoğraflarını analiz ederek hastalıkları teşhis eder.
+4.  **Modern Arayüz:** Glassmorphism tasarımı ile kullanıcı dostu deneyim.
 
-## 🤝 **Katkıda Bulunma**
+## 🤝 Katkıda Bulunma
 
-Projeye katkıda bulunmak isterseniz lütfen [CONTRIBUTING.md](CONTRIBUTING.md) dosyasını inceleyin. Her türlü Pull Request ve Issue açılışına açığız!
+1.  Bu repoyu forklayın (https://github.com/bahattinyunus/smart_autonomous_farm/fork)
+2.  Özellik dalınızı oluşturun (`git checkout -b feature/YeniOzellik`)
+3.  Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik eklendi'`)
+4.  Dalınıza push yapın (`git push origin feature/YeniOzellik`)
+5.  Bir Pull Request oluşturun
+e açılışına açığız!
 
 ## 📜 **Lisans**
 

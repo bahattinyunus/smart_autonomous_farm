@@ -36,190 +36,90 @@ function Form({ onSubmit }) {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-blue-400 to-violet-400 rounded-lg px-4 m-8 h-[calc(100vh-80px)]">
+      <div className="glass-card p-8 m-8 w-full max-w-4xl shadow-2xl">
         <form onSubmit={handleSubmit}>
-          <div className="text-2xl font-bold flex justify-center items-center py-8">
-            <h2 className="rounded-lg text-center">
+          <div className="text-3xl font-bold flex justify-center items-center py-8 text-white drop-shadow-md">
+            <h2 className="text-center">
               GÜBRE TAVSİYE MODELİ
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-4">
-            {/* Humidity Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Humidity"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Nem
-              </label>
-              <input
-                type="number"
-                id="Humidity"
-                name="Humidity"
-                placeholder="Nem değerini girin (%)"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                step="0"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Moisture Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Moisture"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Toprak Nemi
-              </label>
-              <input
-                type="number"
-                id="Moisture"
-                name="Moisture"
-                placeholder="Toprak nemi değerini girin"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                step="0"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Nitrogen Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Nitrogen"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Azot
-              </label>
-              <input
-                type="number"
-                id="Nitrogen"
-                name="Nitrogen"
-                placeholder="Azot değerini girin"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                step="0"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Temparature Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Temparature"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Sıcaklık
-              </label>
-              <input
-                type="number"
-                step="0.1"
-                id="Temparature"
-                name="Temparature"
-                placeholder="Sıcaklık değerini girin (°C)"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Potassium Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Potassium"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Potasyum
-              </label>
-              <input
-                type="number"
-                step="1"
-                id="Potassium"
-                name="Potassium"
-                placeholder="Potasyum değerini girin"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {/* Phosphorous Input */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <label
-                htmlFor="Phosphorous"
-                className="block text-gray-700 py-2 font-bold"
-              >
-                Fosfor
-              </label>
-              <input
-                type="number"
-                step="1"
-                id="Phosphorous"
-                name="Phosphorous"
-                placeholder="Fosfor değerini girin"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required
-                onChange={handleInputChange}
-              />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+            {/* Helper for inputs */}
+            {[
+              { id: "Humidity", label: "Nem (%)" },
+              { id: "Moisture", label: "Toprak Nemi" },
+              { id: "Nitrogen", label: "Azot (N)" },
+              { id: "Temparature", label: "Sıcaklık (°C)", step: "0.1" },
+              { id: "Potassium", label: "Potasyum (K)" },
+              { id: "Phosphorous", label: "Fosfor (P)" },
+            ].map(field => (
+              <div key={field.id} className="col-span-1">
+                <label htmlFor={field.id} className="block text-slate-200 py-2 font-semibold">
+                  {field.label}
+                </label>
+                <input
+                  type="number"
+                  step={field.step || "0"}
+                  id={field.id}
+                  name={field.id}
+                  placeholder="..."
+                  className="w-full bg-black/20 border border-slate-600 rounded-lg py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                  required
+                  onChange={handleInputChange}
+                />
+              </div>
+            ))}
 
             {/* Crop_Type Input */}
             <div className="col-span-1">
-              <label
-                htmlFor="Soil_Type"
-                className="block text-gray-700 py-2 font-bold"
-              >
+              <label htmlFor="Soil_Type" className="block text-slate-200 py-2 font-semibold">
                 Toprak Tipi
               </label>
               <select
                 id="Soil_Type"
                 name="Soil_Type"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-full bg-black/20 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
                 onChange={handleInputChange}
               >
-                <option value="Loamy">Tınlı</option>
-                <option value="Sandy">Kumlu</option>
-                <option value="Clayey">Killi</option>
-                <option value="Black">Siyah</option>
-                <option value="Red">Kırmızı</option>
+                <option className="text-black" value="Loamy">Tınlı</option>
+                <option className="text-black" value="Sandy">Kumlu</option>
+                <option className="text-black" value="Clayey">Killi</option>
+                <option className="text-black" value="Black">Siyah</option>
+                <option className="text-black" value="Red">Kırmızı</option>
               </select>
             </div>
             {/* Crop_Type Input */}
             <div className="col-span-1">
-              <label
-                htmlFor="Crop_Type"
-                className="block text-gray-700 py-2 font-bold"
-              >
+              <label htmlFor="Crop_Type" className="block text-slate-200 py-2 font-semibold">
                 Ürün Tipi
               </label>
               <select
                 id="Crop_Type"
                 name="Crop_Type"
-                className="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-full bg-black/20 border border-slate-600 rounded-lg py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500"
                 required
                 onChange={handleInputChange}
               >
-                <option value="Sugarcane">Şeker Kamışı</option>
-                <option value="Cotton">Pamuk</option>
-                <option value="Millets">Darı</option>
-                <option value="Paddy">Çeltik</option>
-                <option value="Pulses">Bakliyat</option>
-                <option value="Wheat">Buğday</option>
-                <option value="Tobacco">Tütün</option>
-                <option value="Barley">Arpa</option>
-                <option value="Oil seeds">Yağlı Tohumlar</option>
-                <option value="Ground Nuts">Yer Fıstığı</option>
-                <option value="Maize">Mısır</option>
+                <option className="text-black" value="Sugarcane">Şeker Kamışı</option>
+                <option className="text-black" value="Cotton">Pamuk</option>
+                <option className="text-black" value="Millets">Darı</option>
+                <option className="text-black" value="Paddy">Çeltik</option>
+                <option className="text-black" value="Pulses">Bakliyat</option>
+                <option className="text-black" value="Wheat">Buğday</option>
+                <option className="text-black" value="Tobacco">Tütün</option>
+                <option className="text-black" value="Barley">Arpa</option>
+                <option className="text-black" value="Oil seeds">Yağlı Tohumlar</option>
+                <option className="text-black" value="Ground Nuts">Yer Fıstığı</option>
+                <option className="text-black" value="Maize">Mısır</option>
               </select>
             </div>
           </div>
           {/* Button */}
-          <div className="col-span-1 text-center px-12 py-8">
+          <div className="col-span-1 text-center mt-6">
             <button
               type="submit"
-              className="w-64 h-14 bg-black hover:bg-black-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+              className="w-64 h-14 bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
             >
               Tavsiye Al
             </button>
@@ -276,7 +176,7 @@ function Fertilizer() {
   const handleFormSubmit = async (formValues) => {
     try {
       const response = await fetch(
-        "https://karthikfertapi.onrender.com/predict",
+        "http://localhost:8000/api/fertilizer/predict",
         {
           method: "POST",
           headers: {
