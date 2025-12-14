@@ -1,0 +1,29 @@
+# General
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# Flask
+instance/
+.webassets-cache
+
+# Node / React
+node_modules/
+build/
+dist/
+.npm
+.eslintcache
+
+# IDEs
+.vscode/
+.idea/
+*.swp
